@@ -1,0 +1,166 @@
+Eu querp que crie uma tabela igual a essa  <div class="recent-order">
+            <h2 class="table">Tabela</h2>
+            <div class="tablem">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="datath">Sensor 0</th>                            
+                             <th class="umidadeth">Sensor 1</th>
+                            <th class="temperaturath">Sensor 2</th>
+                            <th class="desempenhoth">Sensor 3</th>
+                            <th class="parametroth">Sensor 4</th>
+                            <th class="datath">Sensor 5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="umidade"></td>
+                            <td id="temperatura"></td>
+                            <td id="desempenho" class="warning"></td>
+                            <td id="on" class="warning "></td>
+                            <td id="data" class="primary"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+ E com essa tabela quero que pegue os dados dessa api https://sheetdb.io/api/v1/onvz53b9q9t23, e que pegue esses dados e coloque em uma tabela, meu codigo antigo   
+const getCurrentDateTimeFormatted = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+}
+
+const dataAtualFormatada = getCurrentDateTimeFormatted();
+
+Promise.all([
+    fetch('./Umidade.txt').then(response => response.text()),
+    fetch('./Temperatura.txt').then(response => response.text()),
+    fetch('./Desempenho.txt').then(response => response.text()),
+    fetch('./Data.txt').then(response => response.text()),
+    fetch('./Parametro.txt').then(response => response.text())
+
+])
+    .then(([umidadeData, temperaturaData, desempenhoData, dataData, parametroData]) => {
+        const umidadeLines = umidadeData.split('\n');
+        const umidade = umidadeLines.slice(-4).map(Number);
+        console.log('Umidade:', umidade);
+        document.querySelector('#umidade').textContent = '';
+
+        const temperaturaLines = temperaturaData.split('\n');
+        const temperatura = temperaturaLines.slice(-4).map(Number);
+        console.log('Temperatura:', temperatura);
+        document.querySelector('#temperatura').textContent = '';
+
+        const desempenhoLines = desempenhoData.split('\n');
+        const desempenho = desempenhoLines.slice(-4).map(Number);
+        console.log('Desempenho:', desempenho);
+        document.querySelector('#desempenho').textContent = '';
+
+        const parametroLines = parametroData.split('\n');
+        const parametro = parametroLines.slice(-4);
+        console.log('Parametro:', parametro);
+        document.querySelector('#on').textContent = '';
+
+        const dataLines = dataData.split('\n');
+        const datan = dataLines.slice(-4).map(line => {
+            const [year, month, day] = line.split('-');
+            return new Date(year, month - 1, day);
+
+
+        });
+
+
+
+        console.log('Data:', datan);
+        document.querySelector('#data').textContent = '';
+        const datanFormatted = datan.map(date => date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }));
+
+        const umidadeHTML = umidade.map(val => `<p>${val}</p>`).join('');
+        const temperaturaHTML = temperatura.map(val => `<p>${val}</p>`).join('');
+        const desempenhoHTML = desempenho.map(val => `<p>${val}</p>`).join('');
+        const datanHTML = datanFormatted.map(val => `<p>${val}</p>`).join('');
+        const parametroHTML = parametro.map(val => `<p>${val}</p>`).join('');
+
+        document.querySelector('#umidade').insertAdjacentHTML('beforeend', umidadeHTML);
+        document.querySelector('#temperatura').insertAdjacentHTML('beforeend', temperaturaHTML);
+        document.querySelector('#desempenho').insertAdjacentHTML('beforeend', desempenhoHTML);
+        document.querySelector('#data').insertAdjacentHTML('beforeend', datanHTML);
+        document.querySelector('#on').insertAdjacentHTML('beforeend', parametroHTML);
+
+
+        const chart = document.querySelector("#chart").getContext('2d');
+
+        new Chart(chart, {
+            type: 'line',
+            data: {
+                labels: datanFormatted,
+                datasets: [
+                    {
+                        label: 'Umidade',
+                        data: umidade,
+                        borderColor: 'green',
+                        borderWidth: 2,
+                        pointBorderColor: 'transparent',
+                        pointBorderWidth: 4,
+                        tension: 0.5
+                    },
+                    {
+                        label: 'Temperatura',
+                        data: temperatura,
+                        borderColor: 'red',
+                        borderWidth: 2,
+                        pointBorderColor: 'transparent',
+                        pointBorderWidth: 4,
+                        tension: 0.5
+                    },
+                    {
+                        label: 'Desempenho',
+                        data: desempenho,
+                        borderColor: 'blue',
+                        borderWidth: 2,
+                        pointBorderColor: 'transparent',
+                        pointBorderWidth: 4,
+                        tension: 0.5
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+
+                    y: {
+                        ticks: {
+                            min: 2,
+                            max: 10,
+                            maxTicksLimit: 7,
+
+                            ticks: {
+                                stepSize: 2,
+                                callback: (value) => value + 'K'
+                            },
+                            grid: {
+                                borderDash: [10]
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Erro de leitura:', error);
+    });
+

@@ -1,0 +1,233 @@
+l
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styleindex/style.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.0/model-viewer.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="imagens/logo.png">
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="moblilesite/indexmobile1.css">
+    <title>GreenLife Solutions</title>
+</head>
+
+<body>
+
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="imagens/logo.png" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">GreenLife</span>
+                    <span class="profession">Solutions</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Pesquisar...">
+                </li>
+
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="index.html">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text">Home</span>
+                        </a>
+                    </li>
+
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="dashoboard.html">
+                                <i class='bx bxs-dashboard icon'></i>
+                                <span class="text nav-text">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="weather.html">
+                                <i class='bx bx-pie-chart-alt icon'></i>
+                                <span class="text nav-text">Clima</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="info.html">
+                                <i class='bx bx-info-circle icon'></i>
+                                <span class="text nav-text">Info</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="chatgreen.html">
+                                <i class='bx bx-chat icon'></i>
+                                <span class="text nav-text">ChatGreen<div class="beta">
+                                        <div class="textbeta">Beta</div>
+                                    </div></span>
+                            </a>
+                        </li>
+
+                    </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="logout.html">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+
+            </div>
+        </div>
+
+    </nav>
+
+
+    <div class="overlay">
+        <h1>
+            <span>
+                <img src="imagens/logo.png" alt="">
+            </span>
+        </h1>
+    </div>
+
+    <!------------------Writting---------------------->
+    <div class="wrapper">
+        <div class="typing-demo"></div>
+    </div>
+    <!-------------------END Writting------------------>
+
+
+    <!------------------Bubble---------------------->
+
+    <div class="bubble"></div>
+    <div class="bubble1"></div>
+    <!------------------END Bubble---------------------->
+
+    <!------------------3D object---------------------->
+    <main>
+        <canvas class="webgl"></canvas>
+    </main>
+
+    <div class="cursor"></div>
+    <div class="cursor-border"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.146.0/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.146.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="javaindex/3D.js"></script>
+    <!------------------END 3D object------------------>
+
+    <!------------------Mobile------------------>
+
+    <div class="headermob">
+        <header class="headermobile">
+            <span class="mobimg"><img src="imagens/logo.png" alt="Logo" width="45px" height="45px"
+                    style="margin-top: 2.3vh; margin-left: 3vw;"></span>
+            <div class="logtxm">GreenLife</div>
+            <div class="logoutm">
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="logout.html">
+                            <i class='bx bx-log-out icon'></i>
+                            <span class="text nav-text"></span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </header>
+    </div>
+
+    <div class="mobs">
+        <div class="sidebarmobile">
+            <div class="menu-container">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="index1.html">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text"></span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="dashoboard.html">
+                            <i class='bx bxs-dashboard icon'></i>
+                            <span class="text nav-text"></span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="weather.html">
+                            <i class='bx bx-pie-chart-alt icon'></i>
+                            <span class="text nav-text"></span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="logout.html">
+                            <i class='bx bx-info-circle icon'></i>
+                            <span class="text nav-text"></span>
+                        </a>
+                    </li>
+                </ul>
+                <!-------------Dark mode need be functional-------->
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <div class="containermobile">
+                            <label class="switchm">
+                                <input type="checkbox" id="darkModeToggle">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="moblilesite/option.js"></script>
+    <!------------------END Mobile------------------>
+
+    <script src="javaindex/script.js"></script>
+
+    <div class="start">
+        <h3>Bem Vindo, GreenLife move o mundo do agronegocio</h3>
+    </div>
+
+</body>
+
+</html>

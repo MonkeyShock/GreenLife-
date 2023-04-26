@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard/dashboard.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <script src="dashboard/data.js"></script>
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="moblilesite/dashboardmobile.css">
+    <link rel="shortcut icon" href="imagens/logo.png">
+    <script src="dashboard/grafic.js"></script>
+</head>
+<main>
+    <section class="home">
+        <div class="text" id="firsttext" style="font-size: 50px; padding: 0%;">Dashboard</div>
+
+        <div class="data">
+            <input type="date" id="date">
+        </div>
+        <!--------------- parte 1 ------------>
+
+        <div class="insights">
+            <div class="expenses">
+                <span class="material-symbols-outlined">sunny</span>
+                <div class="middle">
+                    <div class="left">
+                        <h3 class="mini">Temperatura</h3>
+                        <h1 class="mini"></h1>
+                    </div>
+                    <div class="progress">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="number">
+                            <p id="temp-percentage"></p>
+                        </div>
+                    </div>
+                </div>
+                <small class="text-muted">Antes de 24 horas</small>
+            </div>
+
+            <!--------------- parte 2 ------------>
+
+            <div class="sales">
+                <span class="material-symbols-outlined">avg_pace</span>
+                <div class="middle">
+                    <div class="left">
+                        <h3 class="mini">Desempenho</h3>
+                        <h1 class="mini"></h1>
+                    </div>
+                    <div class="progress">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="number">
+                            <p id="performance-percentage"></p>
+                        </div>
+                    </div>
+                </div>
+                <small class="text-muted">Antes de 24 horas</small>
+            </div>
+
+            <!--------------- parte 3 ------------>
+
+            <div class="income">
+                <span class="material-symbols-outlined">water_drop</span>
+                <div class="middle">
+                    <div class="left">
+                        <h3 class="mini">Humidade</h3>
+                        <h1 class="mini"> </h1>
+                    </div>
+                    <div class="progress">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="number">
+                            <p id="humidity-percentage"></p>
+                        </div>
+                    </div>
+                </div>
+                <small class="text-muted">Antes de 24 horas</small>
+            </div>
+        </div>
+
+        <script src="dashboard/mini.js"></script>
+        <!--------------- end -------------->
+
+        <!--------------- Grafics Part -------------->
+        <div class="graficdiv">
+            <h1 class="grafic">Grafico</h1>
+            <canvas id="chart"></canvas>
+        </div>
+        <!----------------Table------------------>
+        <div class="recent-order">
+            <h2 class="table">Tabela</h2>
+            <div class="tablem">
+            </div>
+        </div>
+</main>
+
+<!--------------------Table.js----------------------->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"
+    integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+<script src="dashboard/dashboard.js"></script>
+<!--------------------Table.js----------------------->
+
+<body>
+
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="imagens/logo.png" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">GreenLife</span>
+                    <span class="profession">Solutions</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Pesquisar...">
+                </li>
+
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="index1.html">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text">Home</span>
+                        </a>
+                    </li>
+
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="dashoboard.html">
+                                <i class='bx bxs-dashboard icon'></i>
+                                <span class="text nav-text">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="weather.html">
+                                <i class='bx bx-pie-chart-alt icon'></i>
+                                <span class="text nav-text">Clima</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="info.html">
+                                <i class='bx bx-info-circle icon'></i>
+                                <span class="text nav-text">Info</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="chatgreen.html">
+                                <i class='bx bx-chat icon'></i>
+                                <span class="text nav-text">ChatGreen<div class="beta">
+                                        <div class="textbeta">Beta</div>
+                                    </div></span>
+                            </a>
+                        </li>
+
+                    </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="logout.html">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+
+            </div>
+        </div>
+
+    </nav>
+
+    <!------------------Mobile------------------>
+
+    <div class="headermob">
+        <header class="headermobile">
+            <span class="mobimg"><img src="imagens/logo.png" alt="Logo" width="45px" height="45px"
+                    style="margin-top: 2.3vh; margin-left: 3vw;"></span>
+            <div class="logtxm">GreenLife<br>Dashboard</div>
+            <div class="logoutm">
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="logout.html">
+                            <i class='bx bx-log-out icon'></i>
+                            <span class="text nav-text"></span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </header>
+    </div>
+
+    <div class="mobs">
+        <div class="sidebarmobile">
+            <div class="menu-container">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="index1.html">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text"></span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="dashoboard.html">
+                            <i class='bx bxs-dashboard icon'></i>
+                            <span class="text nav-text"></span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="weather.html">
+                            <i class='bx bx-pie-chart-alt icon'></i>
+                            <span class="text nav-text"></span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="logout.html">
+                            <i class='bx bx-info-circle icon'></i>
+                            <span class="text nav-text"></span>
+                        </a>
+                    </li>
+                </ul>
+                <!-------------Dark mode need be functional-------->
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <div class="containermobile">
+                            <label class="switchm">
+                                <input type="checkbox" id="darkModeToggle">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="moblilesite/option.js"></script>
+    <!------------------END Mobile------------------>
+
+
+    </section>
+    <script src="javaindex/script.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Life Logout</title>
+  <link rel="shortcut icon" href="imagens/logo.png">
+  <link rel="stylesheet" href="Logout/styleout.css">
+</head>
+
+<body>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      // Definir a URL da API Sheetsu
+      var apiURL = "https://sheetsu.com/apis/v1.0su/a5c411e38d47";
+
+      // Ouvir o evento de envio do formulário de login
+      $("#login").submit(function (event) {
+        // Impedir que o formulário seja enviado
+        event.preventDefault();
+
+        // Obter os valores do e-mail e senha do formulário
+        var email = $("#email-login").val();
+        var password = $("#password-login").val();
+
+        // Enviar uma solicitação para verificar se o usuário e a senha estão corretos
+        $.ajax({
+          url: apiURL + "/search?email=" + email + "&password=" + password,
+          type: "GET",
+          success: function (data) {
+            // Verificar se um usuário foi encontrado com o e-mail e senha fornecidos
+            if (data.length > 0) {
+              // Redirecionar o usuário para a página index1.html
+              window.location.href = "index1.html";
+            } else {
+              // Exibir uma mensagem de alerta informando que o e-mail ou senha estão incorretos
+              alert("E-mail ou senha incorretos. Tente novamente.");
+            }
+          },
+          error: function (xhr, status, error) {
+            // Exibir uma mensagem de alerta informando que não foi possível acessar a API
+            alert("Erro ao acessar a API. Tente novamente mais tarde.");
+          }
+        });
+
+      });
+
+    });
+
+
+  </script>
+
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Login</header>
+      <form id="login">
+        <input type="text" id="email-login" placeholder="Coloque o seu email">
+        <input type="password" id="password-login" placeholder="Coloque a senha">
+        <input type="submit" class="button" value="Login">
+      </form>
+      <div class="signup">
+        <span class="signup">Você não tem uma conta?
+          <label for="check">Signup</label>
+        </span>
+      </div>
+    </div>
+    <div class="registration form">
+      <header>Signup</header>
+      <form action="https://sheetdb.io/api/v1/s7iy4hmcey86y" method="post" name="signup">
+        <input type="text" name="email" id="email" placeholder="Coloque o seu email">
+        <input type="password" name="password" id="password" placeholder="Coloque a senha">
+        <input type="submit" class="button" value="Signup">
+      </form>
+      <div class="signup">
+        <span class="signup">Você já tem uma conta?
+          <label for="check">Login</label>
+        </span>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="//load.sheetsu.com"></script>
+
+</html>
